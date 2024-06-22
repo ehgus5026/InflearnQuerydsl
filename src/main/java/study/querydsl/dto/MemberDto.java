@@ -14,7 +14,7 @@ public class MemberDto {
     private String username;
     private int age;
 
-    // findDtoByConstructor()이 호출될 때, 필드 이름이 아니라 타입을 보고 들어옴.
+    // findDtoByConstructor()(생성자 + @QueryProjection) 가 호출될 때, 필드 이름이 아니라 타입을 보고 들어옴.
     @QueryProjection // 생성자에 하고나서 Q파일 생성 시키기.
     public MemberDto(String username, int age) {
         this.username = username;
