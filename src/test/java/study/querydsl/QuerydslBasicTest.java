@@ -637,7 +637,7 @@ public class QuerydslBasicTest {
     @Test
     public void findDtoByField() {
         List<MemberDto> result = queryFactory
-                .select(Projections.fields(MemberDto.class, // 여기서 bean은 setter를 뜻함.
+                .select(Projections.fields(MemberDto.class,
                         member.username,
                         member.age))
                 .from(member)
@@ -658,7 +658,7 @@ public class QuerydslBasicTest {
         QMember memberSub = new QMember("memberSub");
 
         List<UserDto> result = queryFactory
-                .select(Projections.fields(UserDto.class, // 여기서 bean은 setter를 뜻함.
+                .select(Projections.fields(UserDto.class,
                         member.username.as("name"),
                         ExpressionUtils.as(JPAExpressions // 서브쿼리로 age 값을 최대 나이로 모두 출력시키고 싶을 때
                                 .select(memberSub.age.max())
@@ -679,7 +679,7 @@ public class QuerydslBasicTest {
     @Test
     public void findDtoByConstructor() {
         List<MemberDto> result = queryFactory
-                .select(Projections.constructor(MemberDto.class, // 여기서 bean은 setter를 뜻함.
+                .select(Projections.constructor(MemberDto.class,
                         member.username, // MemberDto의 필드와 자료형 타입이 일치해야 딱딱 들어감.
                         member.age))
                 .from(member)
@@ -692,8 +692,8 @@ public class QuerydslBasicTest {
 
     /**
      * 생성자 + @QueryProjection : 일반적으로는 이거 쓰고 순수 DTO를 설계하자 싶을 땐, 필드 직접 접근이나, 프로퍼티나 생성자로 그냥 사용.
-     * 장점 :컴파일 시점에 오류를 잡을 수 있음.
-     * 단점 :DTO에 QueryDSL 어노테이션을 유지 해야 하는 점과 DTO까지 Q 파일을 생성해야 하는 단점이 있다. (DTO가 querydsl에 의존적임)
+     * 장점 : 컴파일 시점에 오류를 잡을 수 있음.
+     * 단점 : DTO에 QueryDSL 어노테이션을 유지 해야 하는 점과 DTO까지 Q 파일을 생성해야 하는 단점이 있다. (DTO가 querydsl에 의존적임)
      */
     @Test
     public void findDtoByQueryProjection() {
