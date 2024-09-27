@@ -31,6 +31,7 @@ public class MemberJpaRepository {
     private final EntityManager em;
     private final JPAQueryFactory queryFactory;
 
+    // 빈으로 등록 했으면 EntityManager나 JPAQueryFactory 아무나 쓰고 싶은거 쓰면 됨.
 //    public MemberJpaRepository(EntityManager em) {
 //        this.em = em;
 //        this.queryFactory = new JPAQueryFactory(em);
